@@ -808,13 +808,13 @@
   'module-signature':
     'patterns': [
       {
-        'begin': '(val)\\s+([a-z_][a-zA-Z0-9_\']*)\\s*(:)'
+        'begin': '(val)\\s+(([a-z_][a-zA-Z0-9_\']*)|(\\(\\s*[=<>@^&+\\-*/$%|][|!$%&*+./:<=>?@^~-]*\\s*\\)))\\s*(:)'
         'beginCaptures':
           '1':
             'name': 'keyword.other.ocaml'
           '2':
             'name': 'entity.name.type.value-signature.ocaml'
-          '3':
+          '5':
             'name': 'punctuation.separator.type-constraint.ocaml'
         'end': '(?=\\b(type|val|external|class|module|end)\\b)|^\\s*$'
         'name': 'meta.module.signature.val.ocaml'

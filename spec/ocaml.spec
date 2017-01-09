@@ -50,3 +50,17 @@ begin fun x -> y end
 //  ^ keyword.operator.infix.integer.ocaml
    a|>b
 //  ^^ entity.name.function.infix.ocaml
+val test: a -> b
+// <- keyword.other.ocaml
+//  ^^^^ entity.name.type.value-signature.ocaml
+//      ^ punctuation.separator.type-constraint.ocaml
+//        ^ storage.type.ocaml
+//          ^^ punctuation.separator.function-return.ocaml
+//             ^ storage.type.ocaml
+val ( >> ): a -> b
+// <- keyword.other.ocaml
+//  ^^^^^^ entity.name.type.value-signature.ocaml
+//        ^ punctuation.separator.type-constraint.ocaml
+//          ^ storage.type.ocaml
+//            ^^ punctuation.separator.function-return.ocaml
+//               ^ storage.type.ocaml
