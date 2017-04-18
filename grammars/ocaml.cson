@@ -45,7 +45,7 @@
         'beginCaptures':
           '0':
             'name': 'punctuation.separator.assignment.ocaml'
-        'end': '\\b(in)|(?=and)\\b'
+        'end': '\\b(?:(in)|(?=and))\\b'
         'endCaptures':
           '1':
             'name': 'keyword.other.in.ocaml'
