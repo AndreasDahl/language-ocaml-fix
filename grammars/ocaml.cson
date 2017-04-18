@@ -24,27 +24,30 @@
     'comment': 'Scoped declaration'
     'begin': '(?=\\blet\\b)'
     'end': '(?<=in)'
+    'name': 'meta.let_binding.ocaml'
     'patterns': [
       {
-        'comment': 'Matches everything between the `let` and the `=`'
-        'begin': '\\blet\\b'
+        'comment': 'Matches everything between the `let|and` and the `=`'
+        'begin': '\\b(let)|(and)\\b'
         'beginCaptures':
-          '0':
+          '1':
             'name': 'keyword.other.let_binding.ocaml'
+          '2':
+            'name': 'keyword.other.and.ocaml'
         'end': '(?==)'
         'patterns': [
           {'include': '$self'}
         ]
       }
       {
-        'comment': 'Matches everything between the `=` and the `in`'
+        'comment': 'Matches everything between the `=` and the `in|and`'
         'begin': '='
         'beginCaptures':
           '0':
             'name': 'punctuation.separator.assignment.ocaml'
-        'end': '\\bin\\b'
+        'end': '\\b(in)|(?=and)\\b'
         'endCaptures':
-          '0':
+          '1':
             'name': 'keyword.other.in.ocaml'
         'patterns': [
           {'include': '$self'}
