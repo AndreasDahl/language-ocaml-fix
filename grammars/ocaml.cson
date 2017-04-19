@@ -27,15 +27,19 @@
     'name': 'meta.let_binding.ocaml'
     'patterns': [
       {
-        'begin': '\\b(let|and)\\s+(?!\\(\\*)((rec\\s+)([a-z_][a-zA-Z0-9_\']*)\\b|([a-z_][a-zA-Z0-9_\']*|\\([^)]+\\)))'
+        'comment': 'Match everything between "let|and" and "=".
+                    Highlights the first word or infix function name after the
+                    "let|and" or an optional "rec" as function name.
+                    The closing "=" may be preceded by a function type definition.'
+        'begin': '\\b(let|and)\\s+(?!\\(\\*)(rec\\b)?\\s*([a-z_][a-zA-Z0-9_\']*|\\([^)]+\\))'
         'beginCaptures':
           '1':
             'name': 'keyword.other.function-definition.ocaml'
-          '3':
+          '2':
             'name': 'keyword.other.function-definition.ocaml'
-          '4':
+          '3':
             'name': 'entity.name.function.ocaml'
-          '5':
+          '4':
             'name': 'entity.name.function.ocaml'
         'end': '(?:(:)\\s*([^=]+))?(?==)'
         'endCaptures':
