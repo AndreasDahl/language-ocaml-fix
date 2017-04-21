@@ -56,3 +56,15 @@ in 3
 //<- keyword.other.in.ocaml
 //<- meta.let_binding.ocaml
 //^^ !meta.let_binding.ocaml
+
+let () = 1 in 2
+//<- keyword.other.function-definition.ocaml
+//  ^^ constant.language.unit.ocaml
+//         ^^ keyword.other.in.ocaml
+//^^^^^^^^^^^ meta.let_binding.ocaml
+//           ^^ !meta.let_binding.ocaml
+
+let open A in b
+//<- keyword.other.module-binding.ocaml
+//  ^^^^ keyword.other.ocaml
+//         ^^ keyword.other.misc.ocaml

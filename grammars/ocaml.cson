@@ -21,6 +21,27 @@
     'name': 'meta.module.binding'
   }
   {
+    'begin': '\\b(let)\\s+(open)\\s+([A-Z][a-zA-Z0-9\'_]*)(?=(\\.[A-Z][a-zA-Z0-9_]*)*)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.other.module-binding.ocaml'
+      '2':
+        'name': 'keyword.other.ocaml'
+      '3':
+        'name': 'support.other.module.ocaml'
+    'end': '(\\s|$)'
+    'name': 'meta.module.openbinding'
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'punctuation.separator.module-reference.ocaml'
+        'match': '(\\.)([A-Z][a-zA-Z0-9\'_]*)'
+        'name': 'support.other.module.ocaml'
+      }
+    ]
+  }
+  {
     'comment': 'Scoped declaration'
     'begin': '(?=\\blet\\b)'
     'end': '(?<=in)'
@@ -31,15 +52,17 @@
                     Highlights the first word or infix function name after the
                     "let|and" or an optional "rec" as function name.
                     The closing "=" may be preceded by a function type definition.'
-        'begin': '\\b(let|and)\\s+(?!\\(\\*)(rec\\b)?\\s*([a-z_][a-zA-Z0-9_\']*|\\([^)]+\\))'
+        'begin': '\\b(let|and)\\s+(?!\\(\\*)(rec\\b)?\\s*(?:(\\(\\))|([a-z_][a-zA-Z0-9_\']*|\\([^)]+\\)))'
         'beginCaptures':
           '1':
             'name': 'keyword.other.function-definition.ocaml'
           '2':
             'name': 'keyword.other.function-definition.ocaml'
           '3':
-            'name': 'entity.name.function.ocaml'
+            'name': 'constant.language.unit.ocaml'
           '4':
+            'name': 'entity.name.function.ocaml'
+          '5':
             'name': 'entity.name.function.ocaml'
         'end': '(?:(:)\\s*([^=]+))?(?==)'
         'endCaptures':
@@ -67,27 +90,6 @@
         'patterns': [
           {'include': '$self'}
         ]
-      }
-    ]
-  }
-  {
-    'begin': '\\b(let)\\s+(open)\\s+([A-Z][a-zA-Z0-9\'_]*)(?=(\\.[A-Z][a-zA-Z0-9_]*)*)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.other.module-binding.ocaml'
-      '2':
-        'name': 'keyword.other.ocaml'
-      '3':
-        'name': 'support.other.module.ocaml'
-    'end': '(\\s|$)'
-    'name': 'meta.module.openbinding'
-    'patterns': [
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.separator.module-reference.ocaml'
-        'match': '(\\.)([A-Z][a-zA-Z0-9\'_]*)'
-        'name': 'support.other.module.ocaml'
       }
     ]
   }
