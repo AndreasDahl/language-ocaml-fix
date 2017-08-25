@@ -99,3 +99,17 @@ let x = (1, begin 2 end, 3)
 let x = begin 1 end
 //      ^^^^^^^^^^^ meta.begin-end-group.ocaml
 //^^^^^^^^^^^^^^^^^ meta.let_binding.ocaml
+
+let x, y = z
+// ^ !entity.name.function.ocaml
+//  ^ entity.name.function.ocaml
+//   ^^ !entity.name.function.ocaml
+//     ^ entity.name.function.ocaml
+//      ^ !entity.name.function.ocaml
+
+let (x, y) = z
+//  ^ !entity.name.function.ocaml
+//   ^ entity.name.function.ocaml
+//    ^^ !entity.name.function.ocaml
+//      ^ entity.name.function.ocaml
+//       ^ !entity.name.function.ocaml

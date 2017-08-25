@@ -52,7 +52,7 @@
                     Highlights the first word or infix function name after the
                     "let|and" or an optional "rec" as function name.
                     The closing "=" may be preceded by a function type definition.'
-        'begin': '\\b(let|and)\\s+(?!\\(\\*)(rec\\b)?\\s*(?:(\\(\\))|([a-z_][a-zA-Z0-9_\']*|\\([^)]+\\)))'
+        'begin': '\\b(let|and)\\s+(?!\\(\\*)(rec\\b)?'
         'beginCaptures':
           '1':
             'name': 'keyword.other.function-definition.ocaml'
@@ -72,6 +72,9 @@
             'name': 'storage.type.ocaml'
         'name': 'meta.function.ocaml'
         'patterns': [
+          {
+            'include': '#function-defs'
+          }
           {
             'include': '#variables'
           }
@@ -1115,6 +1118,47 @@
         'name': 'punctuation.separator.algebraic-type.ocaml'
       }
     ]
+  'function-defs':
+    'patterns': [
+      {
+        'match': '\\(\\)'
+        'name': 'constant.language.unit.ocaml'
+      }
+      {
+        'comment': 'comma seperated list of values for destructuring'
+        'begin': '\\G\\s*([a-z_][a-zA-Z0-9_\']*)\\s*,'
+        'beginCaptures':
+          '1':
+            'name': 'entity.name.function.ocaml'
+        'patterns': [
+          {
+            'include': '#function-defs'
+          }
+        ]
+        'end': '(?![a-z_ ])'
+      }
+      {
+        'match': '\\G\\s*([a-z_][a-zA-Z0-9_\']*)'
+        'captures':
+          '1':
+            'name': 'entity.name.function.ocaml'
+      }
+      {
+        'match': '\\G\\s*\\([^,]+?\\)'
+        'name': 'entity.name.function.ocaml'
+      }
+      {
+        'begin': '\\G\\s*\\('
+        'end': '\\)'
+        'patterns': [
+          {
+            'include': '#function-defs'
+          }
+        ]
+      }
+    ]
+
+
   'variables':
     'patterns': [
       {
