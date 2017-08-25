@@ -68,3 +68,34 @@ let open A in b
 //<- keyword.other.module-binding.ocaml
 //  ^^^^ keyword.other.ocaml
 //         ^^ keyword.other.misc.ocaml
+
+let x = 1
+//^^^^^^^ meta.let_binding.ocaml
+type y = int
+//^^^^^^^^^^ meta.type-definition-group.ocaml
+//^^^^^^^^^^ !meta.let_binding.ocaml
+
+let x = 1
+//^^^^^^^ meta.let_binding.ocaml
+exception y
+//^^^^^^^^^ !meta.let_binding.ocaml
+
+let x = 1
+//^^^^^^^ meta.let_binding.ocaml
+external y : int -> unit = "y"
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^ !meta.let_binding.ocaml
+
+let x = 1
+//^^^^^^^ meta.let_binding.ocaml
+(* comment *)
+//^^^^^^^^^^^ comment.block.ocaml
+and y = 2
+//^^^^^^^ meta.let_binding.ocaml
+
+let x = (1, begin 2 end, 3)
+//          ^^^^^^^^^^^ meta.begin-end-group.ocaml
+//^^^^^^^^^^^^^^^^^^^^^^^^^ meta.let_binding.ocaml
+
+let x = begin 1 end
+//      ^^^^^^^^^^^ meta.begin-end-group.ocaml
+//^^^^^^^^^^^^^^^^^ meta.let_binding.ocaml

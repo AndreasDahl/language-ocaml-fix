@@ -133,3 +133,15 @@ end
 //^^^^^^^^^^^^ comment.block.ocaml
   (* "*)" *)
 //^^^^^^^^^^ comment.block.ocaml
+
+begin match a with
+| a (* comment *) -> a
+//  ^^^^^^^^^^^^^ comment.block.ocaml
+| a -> (* comment *) a
+//     ^^^^^^^^^^^^^ comment.block.ocaml
+  (* comment *)
+//^^^^^^^^^^^^^ comment.block.ocaml
+| a -> a
+| a (* comment: not a type constraint *) -> a
+//  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.block.ocaml
+end

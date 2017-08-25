@@ -44,7 +44,7 @@
   {
     'comment': 'Scoped declaration'
     'begin': '(?=\\blet\\b)'
-    'end': '(?<=in)'
+    'end': '(?<=in)|(?=type|end|exception|external)'
     'name': 'meta.let_binding.ocaml'
     'patterns': [
       {
@@ -83,7 +83,7 @@
         'beginCaptures':
           '0':
             'name': 'punctuation.separator.assignment.ocaml'
-        'end': '\\b(?:(in)|(?=and))\\b'
+        'end': '\\b(?:(in)|(?=and|type|end|exception|external))\\b'
         'endCaptures':
           '1':
             'name': 'keyword.other.in.ocaml'
@@ -98,9 +98,12 @@
   }
   {
     'begin': '^\\s*(?=type\\s)'
-    'end': '\\b(?=let|end|val)|^\\s*$'
+    'end': '\\b(?=let|end|val|exception|external|module)'
     'name': 'meta.type-definition-group.ocaml'
     'patterns': [
+      {
+        'include': '#comments'
+      }
       {
         'begin': '\\b(type|and)\\s+([^=]*)(=)?'
         'beginCaptures':
@@ -110,7 +113,7 @@
             'name': 'storage.type.ocaml'
           '3':
             'name': 'punctuation.separator.type-definition.ocaml'
-        'end': '(?=\\b(type|and|let|end|val)\\b)|(?=^\\s*$)'
+        'end': '(?=\\b(type|and|let|end|val|exception|external|module)\\b)'
         'name': 'meta.type-definition.ocaml'
         'patterns': [
           {
@@ -247,7 +250,7 @@
     ]
   }
   {
-    'begin': '\\b(object)\\s*(?:(\\()(_?[a-z]+)(\\)))?\\s*$'
+    'begin': '\\b(object)\\s*(?:(\\()(_?[a-z]+)(\\)))?\\s*'
     'beginCaptures':
       '1':
         'name': 'keyword.other.object-definition.ocaml'
@@ -266,7 +269,7 @@
     'name': 'meta.object.ocaml'
     'patterns': [
       {
-        'begin': '\\b(method)\\s+(virtual\\s+)?(private\\s+)?([a-z_][a-zA-Z0-9\'_]*)'
+        'begin': '\\b(method!?)\\s+(virtual\\s+)?(private\\s+)?([a-z_][a-zA-Z0-9\'_]*)'
         'beginCaptures':
           '1':
             'name': 'keyword.other.method-definition.ocaml'
@@ -1185,7 +1188,7 @@
         ]
       }
       {
-        'begin': '(\\()(?=(~[a-z][a-zA-Z0-9_]*:|("(\\\\"|[^"])*")|[^\\(\\)~"])+(?<!:)(:>|:(?![:=])))'
+        'begin': '(\\()(?=(~[a-z][a-zA-Z0-9_]*:|("(\\\\"|[^"])*")|[^\\*\\(\\)~"])+(?<!:)(:>|:(?![:=])))'
         'beginCaptures':
           '1':
             'name': 'punctuation.section.type-constraint.ocaml'
