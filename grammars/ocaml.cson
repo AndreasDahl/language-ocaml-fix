@@ -43,7 +43,7 @@
   }
   {
     'comment': 'Scoped declaration'
-    'begin': '(?=\\blet\\b)'
+    'begin': '(?=\\blet(?:%[a-z]+)?\\b)'
     'end': '(?<=in)|(?=type|end|exception|external)'
     'name': 'meta.let_binding.ocaml'
     'patterns': [
@@ -52,7 +52,7 @@
                     Highlights the first word or infix function name after the
                     "let|and" or an optional "rec" as function name.
                     The closing "=" may be preceded by a function type definition.'
-        'begin': '\\b(let|and)\\s+(?!\\(\\*)(rec\\b)?'
+        'begin': '\\b(let(?:%[a-z]+)?|and)\\s+(?!\\(\\*)(rec\\b)?'
         'beginCaptures':
           '1':
             'name': 'keyword.other.function-definition.ocaml'
@@ -624,7 +624,7 @@
     'name': 'keyword.operator.ocaml'
   }
   {
-    'match': '\\b(downto|if|else|match|then|to|when|with|try)\\b'
+    'match': '\\b(downto|if|else|match(?:%[a-z]+)?|then|to|when|with|try)\\b'
     'name': 'keyword.control.ocaml'
   }
   {
