@@ -1,8 +1,7 @@
-id: 'ocaml'
 name: 'OCaml'
+scopeName: 'source.ocaml'
 type: 'tree-sitter'
 parser: 'tree-sitter-ocaml'
-legacyScopeName: 'source.ocaml'
 
 fileTypes: [
   'ml'
@@ -10,7 +9,9 @@ fileTypes: [
   'eliom'
 ]
 
-contentRegExp: '^#![ \\t]*/.*\\bocaml\\b'
+contentRegex: '^#![ \\t]*/.*\\bocaml\\b'
+
+injectionRegex: '^ocaml$'
 
 folds: [
   {
