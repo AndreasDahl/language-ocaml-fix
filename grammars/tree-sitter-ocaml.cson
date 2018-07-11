@@ -209,6 +209,7 @@ scopes:
   '"assert"': 'keyword.operator'
   '"lazy"': 'keyword.operator'
   '"of"': 'keyword.operator'
+  '"as"': 'keyword.operator.assignment'
   '"<-"': 'keyword.operator.assignment'
   '"new"': 'keyword.operator.new'
   'record_expression > "with"': 'keyword.operator.new'
