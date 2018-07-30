@@ -128,7 +128,7 @@
     ]
   }
   {
-    'begin': '(?:\\b(with|function)(?=(\\s*$|.*->))\\b|((?<!\\S)(?:\\|)(?=(?:\\w|\\s).*)))(?:\\s*(exception)\\b)?'
+    'begin': '(?:\\b(with|function)(?!\')(?=(\\s*$|.*->))\\b|((?<!\\S)(?:\\|)(?=(?:\\w|\\s).*)))(?:\\s*(exception)\\b)?'
     'beginCaptures':
       '1':
         'name': 'keyword.control.match-definition.ocaml'
@@ -625,7 +625,7 @@
     'name': 'keyword.operator.ocaml'
   }
   {
-    'match': '\\b(downto|if|else|match(?:%[a-z]+)?|then|to|when|with|try)\\b'
+    'match': '\\b(downto|if|else|match(?:%[a-z]+)?|then|to|when|with|try)(?!\')\\b'
     'name': 'keyword.control.ocaml'
   }
   {
