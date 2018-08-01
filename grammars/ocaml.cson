@@ -824,10 +824,15 @@
     'comment': 'https://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec248'
     'patterns': [
       {
-        'begin': '\\[%([a-zA-Z_][a-zA-Z0-9_\']*(?:\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
+        'begin': '\\[%([a-zA-Z_][a-zA-Z0-9_\']*(?:\\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
         'beginCaptures':
           '1':
             'name': 'support.variable.extension.ocaml'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
         'end': ']'
         'name': 'meta.extension.algebraic.ocaml'
       }
@@ -837,7 +842,7 @@
     'comment': 'https://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec248'
     'patterns': [
       {
-        'begin': '\\[%%([a-zA-Z_][a-zA-Z0-9_\']*(?:\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
+        'begin': '\\[%%([a-zA-Z_][a-zA-Z0-9_\']*(?:\\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
         'beginCaptures':
           '1':
             'name': 'support.variable.extension.ocaml'
