@@ -9,7 +9,7 @@ fileTypes: [
   'eliom'
 ]
 
-contentRegex: '^#![ \\t]*/.*\\bocaml\\b'
+firstLineRegex: '^#![ \\t]*/.*\\bocaml\\b'
 
 injectionRegex: '^ocaml$'
 
