@@ -6,7 +6,7 @@ describe 'OCaml grammar', ->
   beforeEach ->
     # Ensure you're language package is loaded
     waitsForPromise ->
-      atom.packages.activatePackage 'language-ocaml',
+      atom.packages.activatePackage 'language-ocaml-fix',
 
   grammarTest(path.join(__dirname, 'ocaml.spec'))
   grammarTest(path.join(__dirname, 'ocaml_class.spec'))

@@ -43,7 +43,7 @@
   }
   {
     'comment': 'Scoped declaration'
-    'begin': '(?=\\blet\\b)'
+    'begin': '(?=\\blet(?:%[a-z]+)?\\b)'
     'end': '(?<=in)|(?=type|end|exception|external)'
     'name': 'meta.let_binding.ocaml'
     'patterns': [
@@ -52,7 +52,7 @@
                     Highlights the first word or infix function name after the
                     "let|and" or an optional "rec" as function name.
                     The closing "=" may be preceded by a function type definition.'
-        'begin': '\\b(let|and)\\s+(?!\\(\\*)(rec\\b)?'
+        'begin': '\\b(let(?:%[a-z]+)?|and)\\s+(?!\\(\\*)(rec\\b)?'
         'beginCaptures':
           '1':
             'name': 'keyword.other.function-definition.ocaml'
@@ -128,7 +128,7 @@
     ]
   }
   {
-    'begin': '(?:\\b(with|function)(?=(\\s*$|.*->))\\b|((?<!\\S)(?:\\|)(?=(?:\\w|\\s).*)))(?:\\s*(exception)\\b)?'
+    'begin': '(?:\\b(with|function)(?!\')(?=(\\s*$|.*->))\\b|((?<!\\S)(?:\\|)(?=(?:\\w|\\s).*)))(?:\\s*(exception)\\b)?'
     'beginCaptures':
       '1':
         'name': 'keyword.control.match-definition.ocaml'
@@ -625,7 +625,7 @@
     'name': 'keyword.operator.ocaml'
   }
   {
-    'match': '\\b(downto|if|else|match|then|to|when|with|try)\\b'
+    'match': '\\b(downto|if|else|match(?:%[a-z]+)?|then|to|when|with|try)(?!\')\\b'
     'name': 'keyword.control.ocaml'
   }
   {
@@ -824,10 +824,15 @@
     'comment': 'https://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec248'
     'patterns': [
       {
-        'begin': '\\[%([a-zA-Z_][a-zA-Z0-9_\']*(?:\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
+        'begin': '\\[%([a-zA-Z_][a-zA-Z0-9_\']*(?:\\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
         'beginCaptures':
           '1':
             'name': 'support.variable.extension.ocaml'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
         'end': ']'
         'name': 'meta.extension.algebraic.ocaml'
       }
@@ -837,7 +842,7 @@
     'comment': 'https://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec248'
     'patterns': [
       {
-        'begin': '\\[%%([a-zA-Z_][a-zA-Z0-9_\']*(?:\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
+        'begin': '\\[%%([a-zA-Z_][a-zA-Z0-9_\']*(?:\\.[a-zA-Z_][a-zA-Z0-9_\']*)*)'
         'beginCaptures':
           '1':
             'name': 'support.variable.extension.ocaml'
