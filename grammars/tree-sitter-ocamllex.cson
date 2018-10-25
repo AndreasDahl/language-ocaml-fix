@@ -1,0 +1,88 @@
+name: 'OCamllex'
+scopeName: 'source.ocamllex'
+type: 'tree-sitter'
+parser: 'tree-sitter-ocamllex'
+
+fileTypes: [
+  'mll'
+]
+
+folds: [
+  {
+    type: [
+      'comment'
+    ]
+  }
+  {
+    type: [
+      'named_regexp'
+      'lexer_entry'
+    ]
+    start: {type: '='}
+  }
+  {
+    type: 'string'
+    start: {index: 0}
+    end: {index: -1}
+  }
+  {
+    start: {type: '('}
+    end: {type: ')'}
+  }
+  {
+    start: {type: '['}
+    end: {type: ']'}
+  }
+  {
+    start: {type: '{'}
+    end: {type: '}'}
+  }
+]
+
+comments:
+  start: '(*'
+  end: '*)'
+
+scopes:
+  'lexer_definition': 'source.ocamllex'
+
+  'comment': 'comment.block'
+
+  'character': 'constant.character'
+  'escape_sequence': 'constant.character.escape'
+  'any': 'constant.language'
+  'eof': 'constant.language'
+
+  'regexp_name': 'entity.name.tag'
+  'lexer_entry_name': 'entity.name.function'
+
+  '"parse"': 'keyword.control'
+  '"shortest"': 'keyword.control'
+  'lexer_entry > "|"': 'keyword.control'
+  '"|"': 'keyword.operator'
+  '"^"': 'keyword.operator'
+  '"-"': 'keyword.operator'
+  '"#"': 'keyword.operator'
+  '"*"': 'keyword.operator'
+  '"+"': 'keyword.operator'
+  '"?"': 'keyword.operator'
+  '"^"': 'keyword.operator'
+  '"as"': 'keyword.operator.assignment'
+  '"refill"': 'keyword.other.special-method'
+
+  '"let"': 'storage.type.function'
+  '"rule"': 'storage.type.function'
+  '"and"': 'storage.type.function'
+
+  'string': 'string.quoted.double'
+
+  'lexer_argument': 'variable.parameter'
+  'aliased_regexp > regexp_name': 'variable.other'
+
+  '"{"': 'punctuation.section.embedded'
+  '"}"': 'punctuation.section.embedded'
+  '"["': 'punctuation.definition.array'
+  '"]"': 'punctuation.definition.array'
+  '"("': 'punctuation.definition.array'
+  '")"': 'punctuation.definition.array'
+  '"="': 'punctuation.definition.identity'

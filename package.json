@@ -1,5 +1,6 @@
 {
   "name": "language-ocaml-fix",
+  "main": "main.js",
   "version": "1.14.0",
   "private": true,
   "description": "Syntax support for the OCaml language",
@@ -8,7 +9,10 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tree-sitter-ocaml": "^0.13.1",
+    "tree-sitter-ocamllex": "^0.13.0"
+  },
   "devDependencies": {
     "atom-grammar-test": "^0.6.3"
   }

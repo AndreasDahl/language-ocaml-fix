@@ -1,0 +1,279 @@
+name: 'OCaml'
+scopeName: 'source.ocaml'
+type: 'tree-sitter'
+parser: 'tree-sitter-ocaml'
+
+fileTypes: [
+  'ml'
+  'mli'
+  'eliom'
+]
+
+firstLineRegex: '^#![ \\t]*/.*\\bocaml\\b'
+
+injectionRegex: '^ocaml$'
+
+folds: [
+  {
+    type: [
+      'comment'
+      'quoted_string'
+    ]
+  }
+  {
+    type: [
+      'value_specification'
+      'external'
+      'instance_variable_specification'
+      'method_specification'
+    ]
+    start: {type: ':'}
+  }
+  {
+    type: [
+      'let_binding'
+      'class_type_binding'
+    ]
+    start: {type: [':', '=', '+=']}
+  }
+  {
+    type: [
+      'module_binding'
+      'class_binding'
+      'instance_variable_definition'
+      'method_definition'
+      'field_pattern'
+    ]
+    start: {type: [':', '=']}
+  }
+  {
+    type: 'type_binding'
+    start: {type: ['=', '+=']}
+  }
+  {
+    type: [
+      'string'
+      'signature'
+      'structure'
+      'class_body_type'
+      'polymorphic_variant_type'
+      'object_type'
+      'object_copy_expression'
+      'object_expression'
+    ]
+    start: {index: 0}
+    end: {index: -1}
+  }
+  {
+    type: [
+      'open_statement'
+      'include_statement'
+      'inherit'
+      'type_parameter_constraint'
+      'inheritance_definition'
+      'class_initializer'
+      'function_expression'
+      'assert_expression'
+      'lazy_expression'
+      'new_expression'
+      'constructor_pattern'
+      'tag_pattern'
+      'lazy_pattern'
+      'exception_pattern'
+      'then_clause'
+      'else_clause'
+      'do_clause'
+    ]
+    start: {index: 0}
+  }
+  {
+    type: 'if_expression'
+    start: {index: 0}
+    end: {type: 'then_clause'}
+  }
+  {
+    type: [
+      'while_expression'
+      'for_expression'
+    ]
+    start: {index: 0}
+    end: {type: 'do_clause'}
+  }
+  {
+    type: [
+      'match_expression'
+      'try_expression'
+    ]
+    start: {type: 'with'}
+  }
+  {
+    type: [
+      'match_case'
+      'fun_expression'
+    ]
+    start: {type: '->'}
+  }
+  {
+    type: 'set_expression'
+    start: {type: '<-'}
+  }
+  {
+    type: [
+      'attribute'
+      'item_attribute'
+      'floating_attribute'
+      'extension'
+      'item_extension'
+    ]
+    start: {index: 1}
+    end: {index: -1}
+  }
+  {
+    start: {type: '('}
+    end: {type: ')'}
+  }
+  {
+    start: {type: '['}
+    end: {type: ']'}
+  }
+  {
+    start: {type: '[|'}
+    end: {type: '|]'}
+  }
+  {
+    start: {type: '{'}
+    end: {type: '}'}
+  }
+]
+
+comments:
+  start: '(*'
+  end: '*)'
+
+scopes:
+  'compilation_unit': 'source.ocaml'
+
+  'comment': 'comment.block'
+  'line_number_directive': 'comment.line.number-sign'
+  'shebang': 'comment.line.number-sign'
+
+  'number': 'constant.numeric'
+  'character': 'constant.character'
+  'escape_sequence': 'constant.character.escape'
+  'pretty_printing_indication': 'constant.character.escape'
+  'boolean': 'constant.language'
+  'unit': 'constant.language'
+
+  'value_specification > value_name': 'entity.name.function'
+  'let_binding > value_name': 'entity.name.function'
+  'external > value_name': 'entity.name.function'
+  'module_name': 'entity.name.class'
+  'class_name': 'entity.name.class'
+  'module_type_name': 'entity.name.type.class'
+  'type_constructor': 'entity.name.type'
+  'constructor_name': 'entity.name.tag'
+  'tag': 'entity.name.tag'
+  'label': 'entity.other.attribute-name'
+  'field_name': 'entity.other.attribute-name'
+  'instance_variable_name': 'entity.other.attribute-name'
+  'method_name': 'entity.other.attribute-name'
+  'attribute_id': 'entity.other.attribute-name.id'
+
+  '"if"': 'keyword.control'
+  '"then"': 'keyword.control'
+  '"else"': 'keyword.control'
+  '"while"': 'keyword.control'
+  '"do"': 'keyword.control'
+  '"done"': 'keyword.control'
+  '"for"': 'keyword.control'
+  '"to"': 'keyword.control'
+  '"downto"': 'keyword.control'
+  '"match"': 'keyword.control'
+  '"with"': 'keyword.control'
+  '"when"': 'keyword.control'
+  '"function"': 'keyword.control'
+  '"fun"': 'keyword.control'
+  '"try"': 'keyword.control'
+  '"|"': 'keyword.control'
+  '"->"': 'keyword.control'
+  '"sig"': 'keyword.control'
+  '"struct"': 'keyword.control'
+  '"begin"': 'keyword.control'
+  '"end"': 'keyword.control'
+  'prefix_operator': 'keyword.operator'
+  'infix_operator': 'keyword.operator'
+  'dot_operator': 'keyword.operator'
+  '"*"': 'keyword.operator'
+  '"&"': 'keyword.operator'
+  '"#"': 'keyword.operator'
+  '"::"': 'keyword.operator'
+  '"assert"': 'keyword.operator'
+  '"lazy"': 'keyword.operator'
+  '"of"': 'keyword.operator'
+  '"as"': 'keyword.operator.assignment'
+  '"<-"': 'keyword.operator.assignment'
+  '"new"': 'keyword.operator.new'
+  'record_expression > "with"': 'keyword.operator.new'
+  'directive': 'keyword.other.special-method'
+  '"open"': 'keyword.other.special-method'
+  'open_statement > "!"': 'keyword.other.special-method'
+  '"include"': 'keyword.other.special-method'
+  '"inherit"': 'keyword.other.special-method'
+
+  '"in"': 'storage.type'
+  '"module"': 'storage.type.class'
+  '"functor"': 'storage.type.class'
+  '"class"': 'storage.type.class'
+  '"let"': 'storage.type.function'
+  '"and"': 'storage.type.function'
+  '"external"': 'storage.type.function'
+  '"method"': 'storage.type.function'
+  '"initializer"': 'storage.type.function'
+  '"type"': 'storage.type.var'
+  '"exception"': 'storage.type.var'
+  '"val"': 'storage.type.var'
+  '"private"': 'storage.modifier'
+  '"rec"': 'storage.modifier'
+  '"nonrec"': 'storage.modifier'
+  '"mutable"': 'storage.modifier'
+  '"constraint"': 'storage.modifier'
+  '"virtual"': 'storage.modifier'
+
+  'string': 'string.quoted.double'
+  'quoted_string': 'string.regexp'
+
+  'conversion_specification': 'variable.interpolation'
+  'parameter > value_name': 'variable.parameter'
+  'module_parameter > module_name': 'variable.parameter'
+  'type_variable': 'variable.parameter'
+  'inheritance_definition > value_name': 'variable.other'
+  'aliased_type > type_variable': 'variable.other'
+  'alias_pattern > value_name': 'variable.other'
+
+  '"[@"': 'punctuation.section.embedded'
+  '"[@@"': 'punctuation.section.embedded'
+  '"[@@@"': 'punctuation.section.embedded'
+  '"[%"': 'punctuation.section.embedded'
+  '"[%%"': 'punctuation.section.embedded'
+  '"%"': 'punctuation.section.embedded'
+  'attribute > "]"': 'punctuation.section.embedded'
+  'item_attribute > "]"': 'punctuation.section.embedded'
+  'floating_attribute > "]"': 'punctuation.section.embedded'
+  'extension > "]"': 'punctuation.section.embedded'
+  'item_extension > "]"': 'punctuation.section.embedded'
+  '";"': 'punctuation.definition.separator'
+  '";;"': 'punctuation.definition.separator'
+  '","': 'punctuation.definition.separator'
+  '"["': 'punctuation.definition.array'
+  '"]"': 'punctuation.definition.array'
+  '"[|"': 'punctuation.definition.array'
+  '"|]"': 'punctuation.definition.array'
+  '"{"': 'punctuation.definition.array'
+  '"}"': 'punctuation.definition.array'
+  '"("': 'punctuation.definition.array'
+  '")"': 'punctuation.definition.array'
+  '"="': 'punctuation.definition.identity'
+  '":"': 'punctuation.definition.identity'
+  '":>"': 'punctuation.definition.identity'
+  '"+="': 'punctuation.definition.identity'
+  '":="': 'punctuation.definition.identity'

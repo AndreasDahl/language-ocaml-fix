@@ -2,6 +2,26 @@
   'editor':
     'commentStart': '(* '
     'commentEnd': ' *)'
+    'increaseIndentPattern': '(?x)
+        ( = | -> | \\b if | \\b else | \\b then ) \\s* $
+      | \\b ( begin | sig | struct | object ) \\b ((?! \\b end \\b ) . )* $
+      | \\b do \\b ((?! \\b done \\b ) . )* $
+      | \\( [^ \\) ]* $
+      | \\[ [^ \\] ]* $
+      | \\{ [^ \\} ]* $'
+    'decreaseIndentPattern': '(?x)
+        ^ ((?! \\b ( begin | sig | struct | object ) \\b ) . )*? \\b end \\b
+      | ^ ((?! \\b do \\b ) . )*? \\b done \\b
+      | ^ [^ \\( ]* \\)
+      | ^ [^ \\[ ]* \\]
+      | ^ [^ \\{ ]* \\}'
+  'bracket-matcher':
+    autocompleteCharacters: [
+      '()'
+      '[]'
+      '{}'
+      '""'
+    ]
 
 '.source.ocamllex':
   'editor':

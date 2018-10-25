@@ -4,6 +4,8 @@ grammarTest = require 'atom-grammar-test'
 describe 'OCaml grammar', ->
 
   beforeEach ->
+    # Disable tree-sitter
+    atom.config.set 'core.useTreeSitterParsers', false
     # Ensure you're language package is loaded
     waitsForPromise ->
       atom.packages.activatePackage 'language-ocaml-fix',
