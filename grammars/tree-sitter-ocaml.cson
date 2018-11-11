@@ -11,7 +11,7 @@ fileTypes: [
 
 firstLineRegex: '^#![ \\t]*/.*\\bocaml\\b'
 
-injectionRegex: '^ocaml$'
+injectionRegex: 'ocaml'
 
 folds: [
   {
