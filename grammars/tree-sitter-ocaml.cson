@@ -167,6 +167,7 @@ scopes:
   'value_specification > value_name': 'entity.name.function'
   'let_binding > value_name': 'entity.name.function'
   'external > value_name': 'entity.name.function'
+  'application_expression > value_path:nth-child(0)': 'entity.name.function'
   'module_name': 'entity.name.class'
   'class_name': 'entity.name.class'
   'module_type_name': 'entity.name.type.class'
@@ -277,3 +278,12 @@ scopes:
   '":>"': 'punctuation.definition.identity'
   '"+="': 'punctuation.definition.identity'
   '":="': 'punctuation.definition.identity'
+
+  'value_name':
+    match: /^(raise(_notrace)?|invalid_arg|failwith)$/
+    scopes: 'support.function'
+  'type_constructor': [
+    match: /^(int|char|bytes|string|float|bool|unit|exn|array|list|option|int32|int64|nativeint|format6|lazy_t)$/
+    scopes: 'support.type',
+    'entity.name.type'
+  ]
