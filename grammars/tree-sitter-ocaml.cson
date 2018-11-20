@@ -280,7 +280,7 @@ scopes:
   '":="': 'punctuation.definition.identity'
 
   'value_name':
-    match: /^(raise(_notrace)?|invalid_arg|failwith)$/
+    match: /^(raise|raise_notrace|invalid_arg|failwith)$/
     scopes: 'support.function'
   'type_constructor': [
     match: /^(int|char|bytes|string|float|bool|unit|exn|array|list|option|int32|int64|nativeint|format6|lazy_t)$/
