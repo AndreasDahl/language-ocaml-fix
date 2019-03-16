@@ -53,8 +53,9 @@ scopes:
   '"%start"': 'keyword.operator'
   '"%attribute"': 'keyword.operator'
   '"%on_error_reduce"': 'keyword.operator'
-  '"%public"': 'keyword.other.special-method'
-  '"%inline"': 'keyword.other.special-method'
+
+  '"%public"': 'storage.modifier'
+  '"%inline"': 'storage.modifier'
 
   '"let"': 'storage.type.function'
   '":="': 'keyword.control'
@@ -83,6 +84,24 @@ scopes:
   'old_rule > symbol': 'entity.name.function'
   'new_rule > lid': 'entity.name.function'
   'uid': 'entity.name.type.variant.ocaml'
-  'lid':
-    match: /^(endrule|midrule|option|ioption|boption|loption|pair|separated_pair|preceded|terminated|delimited|list|nonempty_list|separated_list|separated_nonempty_list|rev|flatten|append)$/
-    scopes: 'support.function'
+  'lid': [
+    {exact: 'delimited', scopes: 'support.function'}
+    {exact: 'endrule', scopes: 'support.function'}
+    {exact: 'midrule', scopes: 'support.function'}
+    {exact: 'option', scopes: 'support.function'}
+    {exact: 'ioption', scopes: 'support.function'}
+    {exact: 'boption', scopes: 'support.function'}
+    {exact: 'loption', scopes: 'support.function'}
+    {exact: 'pair', scopes: 'support.function'}
+    {exact: 'separated_pair', scopes: 'support.function'}
+    {exact: 'preceded', scopes: 'support.function'}
+    {exact: 'terminated', scopes: 'support.function'}
+    {exact: 'list', scopes: 'support.function'}
+    {exact: 'nonempty_list', scopes: 'support.function'}
+    {exact: 'separated_list', scopes: 'support.function'}
+    {exact: 'separated_nonempty_list', scopes: 'support.function'}
+    {exact: 'rev', scopes: 'support.function'}
+    {exact: 'flatten', scopes: 'support.function'}
+    {exact: 'append', scopes: 'support.function'}
+    'entity.name'
+  ]
