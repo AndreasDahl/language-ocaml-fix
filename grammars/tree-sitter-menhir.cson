@@ -82,6 +82,8 @@ scopes:
   'attribute > "]"': 'punctuation.section.embedded'
 
   'old_rule > symbol': 'entity.name.function'
+  # TODO: add an alias where function applications occur in the parser
+  # 'application:nth-child(0)': 'entity.name.function'
   'new_rule > lid': 'entity.name.function'
   'uid': 'entity.name.type.variant.ocaml'
   'lid': [
