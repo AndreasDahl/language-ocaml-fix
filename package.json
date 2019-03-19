@@ -9,7 +9,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "tree-sitter-ocaml": "^0.13.1",
+    "tree-sitter-ocaml": "^0.14.1",
     "tree-sitter-ocamllex": "^0.14.0",
     "tree-sitter-menhir": "^0.1.2"
   },
