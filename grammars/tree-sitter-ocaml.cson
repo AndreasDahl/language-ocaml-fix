@@ -202,7 +202,7 @@ scopes:
   '"end"': 'keyword.control'
   'prefix_operator': 'keyword.operator'
   'infix_operator': 'keyword.operator'
-  'dot_operator': 'keyword.operator'
+  'indexing_operator': 'keyword.operator'
   '"*"': 'keyword.operator'
   '"&"': 'keyword.operator'
   '"#"': 'keyword.operator'
