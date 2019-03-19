@@ -1,6 +1,22 @@
 exports.activate = function() {
   if (!atom.grammars.addInjectionPoint) return
 
+  atom.grammars.addInjectionPoint('source.menhir', {
+    type: 'ocaml',
+
+    language: (node) => 'ocaml',
+
+    content: (node) => node
+  })
+
+  atom.grammars.addInjectionPoint('source.menhir', {
+    type: 'ocaml_type',
+
+    language: (node) => 'ocaml',
+
+    content: (node) => node
+  })
+
   atom.grammars.addInjectionPoint('source.ocamllex', {
     type: 'lexer_definition',
 

@@ -1,0 +1,109 @@
+name: 'Menhir'
+scopeName: 'source.menhir'
+type: 'tree-sitter'
+parser: 'tree-sitter-menhir'
+
+fileTypes: [
+  'mly'
+]
+
+folds: [
+  {
+    type: [
+      'ocaml_comment'
+      'comment'
+    ]
+  }
+  {
+    type: [
+      'header'
+      'action'
+      'type'
+      'attribute'
+    ]
+    start: {index: 0}
+    end: {index: -1}
+  }
+  {
+    type: 'new_rule'
+    start: {type: 'equality_symbol'}
+  }
+  {
+    type: 'old_rule'
+    start: {type: '":"'}
+  }
+]
+
+comments:
+  start: '// '
+
+scopes:
+  'source_file': 'source.menhir'
+
+  'comment': 'comment.block'
+  'ocaml_comment': 'comment.block'
+  'line_comment': 'comment.line'
+
+  '"%parameter"': 'keyword.operator'
+  '"%token"': 'keyword.operator'
+  '"%left"': 'keyword.operator'
+  '"%right"': 'keyword.operator'
+  '"%nonassoc"': 'keyword.operator'
+  '"%type"': 'keyword.operator'
+  '"%start"': 'keyword.operator'
+  '"%attribute"': 'keyword.operator'
+  '"%on_error_reduce"': 'keyword.operator'
+
+  '"%public"': 'storage.modifier'
+  '"%inline"': 'storage.modifier'
+
+  '"let"': 'storage.type.function'
+  '":="': 'keyword.control'
+  '"=="': 'keyword.control'
+  '"~"': 'keyword.operator'
+
+  '"="': 'keyword.operator'
+  '"?"': 'keyword.operator'
+  '"*"': 'keyword.operator'
+  '"+"': 'keyword.operator'
+  '"|"': 'keyword.control'
+  '":"': 'keyword.control'
+  '";"': 'keyword.control'
+  '"%%"': 'keyword.control'
+  '"%%"': 'keyword.control'
+  '","': 'punctuation.definition.separator'
+  '"<"': 'punctuation.section.embedded'
+  '">"': 'punctuation.section.embedded'
+  '"{"': 'punctuation.section.embedded'
+  '"}"': 'punctuation.section.embedded'
+  '"%{"': 'punctuation.section.embedded'
+  '"%}"': 'punctuation.section.embedded'
+  '"[@"': 'punctuation.section.embedded'
+  'attribute > "]"': 'punctuation.section.embedded'
+
+  'old_rule > symbol': 'entity.name.function'
+  # TODO: add an alias where function applications occur in the parser
+  # 'application:nth-child(0)': 'entity.name.function'
+  'new_rule > lid': 'entity.name.function'
+  'uid': 'entity.name.type.variant.ocaml'
+  'lid': [
+    {exact: 'delimited', scopes: 'support.function'}
+    {exact: 'endrule', scopes: 'support.function'}
+    {exact: 'midrule', scopes: 'support.function'}
+    {exact: 'option', scopes: 'support.function'}
+    {exact: 'ioption', scopes: 'support.function'}
+    {exact: 'boption', scopes: 'support.function'}
+    {exact: 'loption', scopes: 'support.function'}
+    {exact: 'pair', scopes: 'support.function'}
+    {exact: 'separated_pair', scopes: 'support.function'}
+    {exact: 'preceded', scopes: 'support.function'}
+    {exact: 'terminated', scopes: 'support.function'}
+    {exact: 'list', scopes: 'support.function'}
+    {exact: 'nonempty_list', scopes: 'support.function'}
+    {exact: 'separated_list', scopes: 'support.function'}
+    {exact: 'separated_nonempty_list', scopes: 'support.function'}
+    {exact: 'rev', scopes: 'support.function'}
+    {exact: 'flatten', scopes: 'support.function'}
+    {exact: 'append', scopes: 'support.function'}
+    'entity.name'
+  ]
