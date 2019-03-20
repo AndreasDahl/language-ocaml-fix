@@ -1,0 +1,45 @@
+name: 'Dune'
+scopeName: 'source.dune'
+type: 'tree-sitter'
+parser: 'tree-sitter-dune'
+
+fileTypes: [
+  'dune'
+  'dune-project'
+  'jbuild'
+]
+
+folds: [
+  {
+    type: 'quoted_string'
+    start: {index: 0}
+    end: {index: -1}
+  }
+  {
+    start: {type: '('}
+    end: {type: ')'}
+  }
+]
+
+comments:
+  start: '; '
+
+scopes:
+  'configuration': 'source.dune'
+
+  'comment': 'comment.line.semicolon'
+
+  'list > atom:nth-child(1)': 'entity.name.function'
+
+  'quoted_string': 'string.quoted.double'
+  'block_string': 'string.quoted.triple'
+  'raw_string': 'string.quoted.triple'
+
+  'escape_sequence': 'constant.character.escape'
+
+  'variable': 'variable.other'
+  'variable_name': 'entity.name.tag'
+  'variable_value': 'string.interpolated'
+
+  '"("': 'punctuation.definition.array'
+  '")"': 'punctuation.definition.array'

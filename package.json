@@ -11,7 +11,8 @@
   "dependencies": {
     "tree-sitter-ocaml": "^0.14.1",
     "tree-sitter-ocamllex": "^0.14.0",
-    "tree-sitter-menhir": "^0.1.2"
+    "tree-sitter-menhir": "^0.1.2",
+    "tree-sitter-dune": "^0.14.1"
   },
   "devDependencies": {
     "atom-grammar-test": "^0.6.3"
