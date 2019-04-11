@@ -198,6 +198,7 @@ scopes:
   '"->"': 'keyword.control'
   '"sig"': 'keyword.control'
   '"struct"': 'keyword.control'
+  '"object"': 'keyword.control'
   '"begin"': 'keyword.control'
   '"end"': 'keyword.control'
   'prefix_operator': 'keyword.operator'
