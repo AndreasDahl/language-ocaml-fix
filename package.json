@@ -3,16 +3,16 @@
   "main": "main.js",
   "version": "3.3.2",
   "description": "Syntax support for the OCaml language",
-  "repository": "https://github.com/andreasdahl/language-ocaml-fix",
+  "repository": "https://github.com/atom-ocaml/language-ocaml-fix",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "tree-sitter-ocaml": "^0.14.3",
-    "tree-sitter-ocamllex": "^0.14.0",
+    "tree-sitter-ocaml": "^0.15.0",
+    "tree-sitter-ocamllex": "^0.15.0",
     "tree-sitter-menhir": "^0.1.2",
-    "tree-sitter-dune": "^0.14.1"
+    "tree-sitter-dune": "^0.15.0"
   },
   "devDependencies": {
     "atom-grammar-test": "^0.6.3"
