@@ -1,7 +1,7 @@
 {
   "name": "language-ocaml-fix",
   "main": "main.js",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "description": "Syntax support for the OCaml language",
   "repository": "https://github.com/atom-ocaml/language-ocaml-fix",
   "license": "MIT",
