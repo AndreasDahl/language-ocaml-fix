@@ -9,12 +9,12 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "tree-sitter-ocaml": "^0.16.0",
+    "tree-sitter-ocaml": "git@github.com:tree-sitter/tree-sitter-ocaml.git#ac885cabeeec4d8b5ed1dcd577533b0b549496fe",
     "tree-sitter-ocamllex": "^0.16.0",
-    "tree-sitter-menhir": "^0.1.3",
+    "tree-sitter-menhir": "git@github.com:Kerl13/tree-sitter-menhir.git#25091b56f0e9dc0e33de7ed6a13581cbf5dcaf5b",
     "tree-sitter-dune": "^0.16.0"
   },
   "devDependencies": {
-    "atom-grammar-test": "^0.6.3"
+    "atom-grammar-test": "^0.6.4"
   }
 }
